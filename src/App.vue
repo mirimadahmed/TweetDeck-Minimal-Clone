@@ -1,18 +1,24 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <b-container id="app" fluid>
+    <b-row>
+      <Colomn v-for="(Colomn, i) in Colomns" :key="i"/>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Colomn from './components/Colomn.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
-  }
+    Colomn
+  },
+  data() {
+    return {
+        Colomns: [1,2,3]
+    };
+  },
 }
 </script>
 
@@ -21,8 +27,7 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  background-color: cadetblue;
 }
 </style>
