@@ -1,18 +1,26 @@
 <template>
   <b-container id="app" fluid>
     <b-row>
-      <Colomn v-for="(Colomn, i) in Colomns" :key="i"/>
+      <b-col sm="2">
+        <config-card></config-card>
+      </b-col>
+      <b-col sm="10">
+        <b-row>
+          <Colomn v-for="(Colomn, i) in Colomns" :key="i"/>
+        </b-row>
+      </b-col>
     </b-row>
   </b-container>
 </template>
 
 <script>
 import Colomn from './components/Colomn.vue'
-
+import ConfigCard from './components/ConfigCard.vue'
 export default {
   name: 'app',
   components: {
-    Colomn
+    Colomn,
+    ConfigCard
   },
   data() {
     return {

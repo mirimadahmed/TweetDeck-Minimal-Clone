@@ -18,3 +18,5 @@ export default {
   name: 'TweetCard',
 }
 </script>
+<style scoped>
+</style>

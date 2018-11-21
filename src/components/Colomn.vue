@@ -1,7 +1,12 @@
 <template>
     <b-col sm="4">
-        <h1>Colomn</h1>
-        <TweetCard v-for="(Tweet, i) in Tweets" :key="i"/>
+        <div id="colomn">
+            <div id="colomnHeader">
+                <span>Colomn</span>
+                <font-awesome-icon icon="i-cursor" />
+            </div>
+            <TweetCard v-for="(Tweet, i) in Tweets" :key="i"/>
+        </div>
     </b-col>
 </template>
 
@@ -20,3 +25,11 @@ export default {
   },
 }
 </script>
+
+<style>
+#colomn{
+    border: 1px solid blue;
+    padding: 5px;
+    margin-top: 5px;
+}
+</style>
