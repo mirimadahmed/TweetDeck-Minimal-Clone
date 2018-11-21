@@ -2,9 +2,9 @@
     <b-col sm="4">
         <div id="colomn">
             <div id="colomnHeader">
-                <span>Colomn</span>
+                <span>{{name}}</span>
             </div>
-            <TweetCard v-for="(Tweet, i) in Tweets" :key="i"/>
+            <TweetCard v-for="(Tweet, i) in Tweets" :key="i" :Tweet='Tweet'/>
         </div>
     </b-col>
 </template>
