@@ -6,7 +6,7 @@
       </b-col>
       <b-col sm="10">
         <b-row>
-          <Colomn v-for="(Colomn, i) in Colomns" :key="i"/>
+          <Colomn v-for="(Colomn, i) in Colomns" :key="i" :name='Colomn'/>
         </b-row>
       </b-col>
     </b-row>
@@ -24,7 +24,7 @@ export default {
   },
   data() {
     return {
-        Colomns: [1,2,3]
+        Colomns: ['makeschool', 'ycombinator', 'newsycombinator ']
     };
   },
 }

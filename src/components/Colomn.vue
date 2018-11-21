@@ -3,7 +3,6 @@
         <div id="colomn">
             <div id="colomnHeader">
                 <span>Colomn</span>
-                <font-awesome-icon icon="i-cursor" />
             </div>
             <TweetCard v-for="(Tweet, i) in Tweets" :key="i"/>
         </div>
@@ -12,17 +11,27 @@
 
 <script>
 import TweetCard from './TweetCard.vue'
-
+import axios from 'axios';
 export default {
   name: 'Colomn',
   components: {
     TweetCard
   },
+  props: {
+    name: {
+      type: String,
+    }
+  },
   data() {
     return {
-        Tweets: [1,2,3,4,5]
+        Tweets: [],
     };
   },
+  mounted() {
+      axios
+        .get('http://localhost:7890/1.1/statuses/user_timeline.json?count=30&screen_name='+this.name)
+        .then(response => this.Tweets = response.data)
+  }
 }
 </script>
 
