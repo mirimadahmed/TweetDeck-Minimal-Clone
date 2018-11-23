@@ -8,6 +8,7 @@
             <b-form-group horizontal v-for='(col, i) in cols' :key="i" :label='col' :label-cols="6">
                 <b-form-input id="input_sm" size="sm" v-model="lengths[i]"></b-form-input>
             </b-form-group>
+            
         </b-col>
     </b-row>
 </template>
@@ -15,9 +16,9 @@
 export default {
     name: 'ConfigCard',
     props: {
-    cols: {
-      type: Array,
-    }
+        cols: {
+            type: Array,
+        }
     },
     data () {
         return {

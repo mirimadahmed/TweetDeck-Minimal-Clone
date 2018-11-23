@@ -1,8 +1,9 @@
 <template>
-  <b-container id="app" fluid>
+  <b-container id="app" fluid v-bind:style="{ backgroundColor: getColor()}">
     <b-row>
       <b-col sm="3">
         <config-card :cols='Colomns' @lengths='saveLengths'></config-card>
+        Background Color: <colorpicker :color="color" v-model="color" />
       </b-col>
       <b-col sm="9">
         <draggable v-model="Colomns" :options="{group:'Colomns'}" element='b-row' @start="drag=true" @end="drag=false">
@@ -19,22 +20,31 @@
 import Colomn from './components/Colomn.vue'
 import ConfigCard from './components/ConfigCard.vue'
 import draggable from 'vuedraggable'
+import colorpicker from './components/ColorPicker.vue';
 export default {
   name: 'app',
   components: {
     Colomn,
     ConfigCard,
-    draggable
+    draggable,
+    colorpicker
   },
   data() {
     return {
       Colomns: ['makeschool', 'ycombinator', 'newsycombinator '],
-      lengths: []
+      lengths: [],
+      color: '#e6ecf0'
     };
   },
   methods: {
     saveLengths(lengths){
       this.lengths = lengths;
+    },
+    getColor() {
+      if (localStorage.color) {
+        this.color = localStorage.color;
+      }
+      return this.color
     }
   }
 }
@@ -46,6 +56,5 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  background-color: #e6ecf0;
 }
 </style>
