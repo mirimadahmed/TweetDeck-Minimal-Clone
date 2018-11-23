@@ -1,12 +1,12 @@
 <template>
   <b-container id="app" fluid>
     <b-row>
-      <b-col sm="2">
-        <config-card></config-card>
+      <b-col sm="3">
+        <config-card :cols='Colomns' @lengths='saveLengths'></config-card>
       </b-col>
-      <b-col sm="10">
+      <b-col sm="9">
         <b-row>
-          <Colomn v-for="(Colomn, i) in Colomns" :key="i" :name='Colomn'/>
+          <Colomn v-for="(Colomn, i) in Colomns" :key="i" :name='Colomn' :length='lengths[i]'/>
         </b-row>
       </b-col>
     </b-row>
@@ -24,9 +24,15 @@ export default {
   },
   data() {
     return {
-        Colomns: ['makeschool', 'ycombinator', 'newsycombinator ']
+      Colomns: ['makeschool', 'ycombinator', 'newsycombinator '],
+      lengths: []
     };
   },
+  methods: {
+    saveLengths(lengths){
+      this.lengths = lengths;
+    }
+  }
 }
 </script>
 
@@ -36,6 +42,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  background-color: cadetblue;
+  background-color: #e6ecf0;
 }
 </style>

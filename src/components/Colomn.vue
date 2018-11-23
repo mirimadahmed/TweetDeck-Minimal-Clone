@@ -1,10 +1,10 @@
 <template>
     <b-col sm="4">
         <div id="colomn">
-            <div id="colomnHeader">
-                <span>{{name}}</span>
+            <div >
+                <h5 id="colomnHeader">Tweets by: @{{name}}</h5>
             </div>
-            <TweetCard v-for="(Tweet, i) in Tweets" :key="i" :Tweet='Tweet'/>
+            <TweetCard v-for="(Tweet, i) in FilteredTweets" :key="i" :Tweet='Tweet'/>
         </div>
     </b-col>
 </template>
@@ -20,12 +20,20 @@ export default {
   props: {
     name: {
       type: String,
+    },
+    length: {
+      type: String,
     }
   },
   data() {
     return {
         Tweets: [],
     };
+  },
+  computed: {
+    FilteredTweets () {
+        return this.Tweets.slice(0, parseInt(this.length));
+    }
   },
   mounted() {
       axios
@@ -37,8 +45,9 @@ export default {
 
 <style>
 #colomn{
-    border: 1px solid blue;
-    padding: 5px;
-    margin-top: 5px;
+    margin-top: 10px;
+}
+#colomnHeader{
+    color: #1da1f2;
 }
 </style>
