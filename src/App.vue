@@ -5,9 +5,11 @@
         <config-card :cols='Colomns' @lengths='saveLengths'></config-card>
       </b-col>
       <b-col sm="9">
-        <b-row>
-          <Colomn v-for="(Colomn, i) in Colomns" :key="i" :name='Colomn' :length='lengths[i]'/>
-        </b-row>
+        <draggable v-model="Colomns" :options="{group:'Colomns'}" element='b-row' @start="drag=true" @end="drag=false">
+          <b-col v-for="(Colomn, i) in Colomns" :key="i">
+            <Colomn :name='Colomn' :length='lengths[i]'/>
+          </b-col>
+        </draggable>
       </b-col>
     </b-row>
   </b-container>
@@ -16,11 +18,13 @@
 <script>
 import Colomn from './components/Colomn.vue'
 import ConfigCard from './components/ConfigCard.vue'
+import draggable from 'vuedraggable'
 export default {
   name: 'app',
   components: {
     Colomn,
-    ConfigCard
+    ConfigCard,
+    draggable
   },
   data() {
     return {

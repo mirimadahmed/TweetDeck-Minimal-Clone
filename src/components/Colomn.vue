@@ -1,12 +1,10 @@
 <template>
-    <b-col sm="4">
-        <div id="colomn">
-            <div >
-                <h5 id="colomnHeader">Tweets by: @{{name}}</h5>
-            </div>
-            <TweetCard v-for="(Tweet, i) in FilteredTweets" :key="i" :Tweet='Tweet'/>
+    <div id="colomn">
+        <div >
+            <h5 id="colomnHeader">Tweets by: @{{name}}</h5>
         </div>
-    </b-col>
+        <TweetCard v-for="(Tweet, i) in FilteredTweets" :key="i" :Tweet='Tweet'/>
+    </div>
 </template>
 
 <script>
